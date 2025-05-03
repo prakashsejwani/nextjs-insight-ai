@@ -2,7 +2,12 @@
 'use client';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-export default function VisitorsChart({ data }: { data: any[] }) {
+interface ChartPoint {
+  timestamp: string;
+  count: number;
+}
+
+export default function VisitorsChart({ data }: { data: ChartPoint[] }) {
   return (
     <div className="bg-white p-4 rounded-xl shadow">
       <h2 className="text-lg font-semibold mb-2">Visitor Trends</h2>

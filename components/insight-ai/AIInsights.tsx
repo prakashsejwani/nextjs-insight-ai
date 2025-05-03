@@ -2,10 +2,10 @@
 import { useState } from "react";
 
 export default function AIInsights() {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -17,10 +17,11 @@ export default function AIInsights() {
         body: JSON.stringify({ query: input })
       });
       if (!res.ok) throw new Error("AI query failed");
-      const { result } = await res.json();
+      const { result }: { result: string } = await res.json();
       setOutput(result);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      if (err instanceof Error) setError(err.message);
+      else setError("An unknown error occurred");
     } finally {
       setLoading(false);
     }
