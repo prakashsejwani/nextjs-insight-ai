@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import Chart from "@/components/charts/VisitorsChart";
 import AIInsights from "@/components/insight-ai/AIInsights";
