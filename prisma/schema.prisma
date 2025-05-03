@@ -1,0 +1,13 @@
+// 8. /prisma/schema.prisma – DB schema
+// Run: npx prisma migrate dev
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Pageview {
+  id        String   @id @default(cuid())
+  url       String
+  referrer  String?
+  timestamp DateTime @default(now())
+  userAgent String
+}
